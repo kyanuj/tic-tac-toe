@@ -30,11 +30,11 @@ function Board() {
 
   function handleClick(i) {    
     const Squares = squares.slice(); 
-    if(Squares[i]=== null) 
-    {
-      Squares[i] = xIsNext ? 'X' : 'O'; 
-      setXIsNext(!xIsNext); 
-    }  
+    if(calculateWinner(Squares) || Squares[i]) 
+      return;
+
+    Squares[i] = xIsNext ? 'X' : 'O'; 
+    setXIsNext(!xIsNext);  
         
     setSquares(Squares); 
   }
