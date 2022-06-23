@@ -8,7 +8,7 @@ function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
 
-  const status = 'Next player: X';
+  const status = 'Next player: ' + (xIsNext ? 'X' : 'O');
 
   function renderSquare(i){
     return(
@@ -23,11 +23,10 @@ function Board() {
     if(Squares[i]=== null) 
     {
       Squares[i] = xIsNext ? 'X' : 'O'; 
-      console.log(Squares);
+      setXIsNext(!xIsNext); 
     }  
         
     setSquares(Squares); 
-    setXIsNext(!xIsNext); 
   }
 
   return (
