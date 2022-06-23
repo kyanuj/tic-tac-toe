@@ -8,7 +8,17 @@ function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
 
-  const status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+  const status = setStatus();
+
+  function setStatus(){
+    const winner = calculateWinner(squares);    
+       
+    if (winner) {      
+      return 'HA GANADO JUGADOR : ' + winner;    
+    } 
+    
+    return 'ES SU TURNO JUGADOR: ' + (xIsNext ? 'X' : 'O');    
+  }
 
   function renderSquare(i){
     return(
