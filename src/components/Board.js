@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 function Board() {
   
   const [squares, setSquares] = useState(Array(9).fill(null));
+  const [xIsNext, setXIsNext] = useState(true);
 
   const status = 'Next player: X';
 
@@ -13,7 +14,20 @@ function Board() {
     return(
     <Square
       value={squares[i]}
+      onClick={() => handleClick(i)}
     />);
+  }
+
+  function handleClick(i) {    
+    const Squares = squares.slice(); 
+    if(Squares[i]=== null) 
+    {
+      Squares[i] = xIsNext ? 'X' : 'O'; 
+      console.log(Squares);
+    }  
+        
+    setSquares(Squares); 
+    setXIsNext(!xIsNext); 
   }
 
   return (
