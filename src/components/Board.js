@@ -1,26 +1,41 @@
 import Square from './Square';
+import React, { useState } from 'react';
+
+
 
 function Board() {
-    return (
-        <div>
-          <div className="status">'Next player: X'</div>
-          <div className="board-row">
-            <Square i='0' />
-            <Square i='1'/>
-            <Square i='2'/>
-          </div>
-          <div className="board-row">
-            <Square i='3'/>
-            <Square i='4'/>
-            <Square i='5'/>
-          </div>
-          <div className="board-row">
-            <Square i='6'/>
-            <Square i='7'/>
-            <Square i='8'/>
-          </div>
+  
+  const [squares, setSquares] = useState(Array(9).fill(null));
+
+  const status = 'Next player: X';
+
+  function renderSquare(i){
+    return(
+    <Square
+      value={squares[i]}
+    />);
+  }
+
+  return (
+      <div>
+        <div className="status">{status}</div>
+        <div className="board-row">
+          {renderSquare(0)}
+          {renderSquare(1)}
+          {renderSquare(2)}
         </div>
-      );
+        <div className="board-row">
+          {renderSquare(3)}
+          {renderSquare(4)}
+          {renderSquare(5)}
+        </div>
+        <div className="board-row">
+          {renderSquare(6)}
+          {renderSquare(7)}
+          {renderSquare(8)}
+        </div>
+      </div>
+    );
 }
 
 export default Board;
